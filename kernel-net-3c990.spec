@@ -3,7 +3,7 @@
 # _without_dist_kernel          without distribution kernel
 
 %define		_orig_name	3c990
-%define		_rel 5
+%define		_rel 6
 
 Summary:	Linux driver for the 3Com 3C990 Network Interface Cards
 Summary(pl):	Sterownik dla Linuksa do kart sieciowych 3Com 3C990
@@ -39,7 +39,7 @@ Summary:        Linux SMP driver for the 3Com 3C990 Network Interface Cards
 Summary(pl):    Sterownik dla Linuxa SMP dla kart sieciowych 3Com 3C990
 Release:        %{_rel}@%{_kernel_ver_str}
 Prereq:		/sbin/depmod
-%{!?_without_dist_kernel:%requires_releq_kernel_up}
+%{!?_without_dist_kernel:%requires_releq_kernel_smp}
 Group:		Base/Kernel
 
 %description -n kernel-smp-net-%{_orig_name}
