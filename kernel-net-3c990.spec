@@ -36,7 +36,7 @@ tych linii produktów.
 
 %package -n kernel-smp-net-%{_orig_name}
 Summary:        Linux SMP driver for the 3Com 3C990 Network Interface Cards
-Summary(pl):    Sterownik dla Linuxa SMP dla kart sieciowych 3Com 3C990
+Summary(pl):    Sterownik dla Linuksa SMP dla kart sieciowych 3Com 3C990
 Release:        %{_rel}@%{_kernel_ver_str}
 Prereq:		/sbin/depmod
 %{!?_without_dist_kernel:%requires_releq_kernel_smp}
