@@ -1,7 +1,7 @@
-
-# conditional build
+#
+# Conditional build:
 # _without_dist_kernel          without distribution kernel
-
+#
 %define		_orig_name	3c990
 
 Summary:	Linux driver for the 3Com 3C990 Network Interface Cards
@@ -16,8 +16,8 @@ Source0:	http://support.3com.com/infodeli/tools/nic/linux/%{_orig_name}-%{versio
 Patch0:		%{_orig_name}-redefine.patch
 %{!?_without_dist_kernel:BuildRequires:         kernel-headers }
 BuildRequires:	%{kgcc_package}
-PreReq:		/sbin/depmod
 %{!?_without_dist_kernel:%requires_releq_kernel_up}
+Requires(post,postun):	/sbin/depmod
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -38,9 +38,9 @@ tych linii produktów.
 Summary:        Linux SMP driver for the 3Com 3C990 Network Interface Cards
 Summary(pl):    Sterownik dla Linuksa SMP dla kart sieciowych 3Com 3C990
 Release:        %{_rel}@%{_kernel_ver_str}
-Prereq:		/sbin/depmod
-%{!?_without_dist_kernel:%requires_releq_kernel_smp}
 Group:		Base/Kernel
+%{!?_without_dist_kernel:%requires_releq_kernel_smp}
+Requires(post,postun):	/sbin/depmod
 
 %description -n kernel-smp-net-%{_orig_name}
 This driver (3c990.c) has been written to work with the 3c990 product
@@ -77,16 +77,16 @@ install %{_orig_name}.o $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}/misc/%{_orig_
 rm -rf $RPM_BUILD_ROOT
 
 %post
-/sbin/depmod -a
+/sbin/depmod -a -F /boot/System.map-%{_kernel_ver} %{_kernel_ver}
 
 %postun
-/sbin/depmod -a
+/sbin/depmod -a -F /boot/System.map-%{_kernel_ver} %{_kernel_ver}
 
-%post -n kernel-smp-net-%{_orig_name}
-/sbin/depmod -a
+%post	-n kernel-smp-net-%{_orig_name}
+/sbin/depmod -a -F /boot/System.map-%{_kernel_ver}smp %{_kernel_ver}smp
 
 %postun -n kernel-smp-net-%{_orig_name}
-/sbin/depmod -a
+/sbin/depmod -a -F /boot/System.map-%{_kernel_ver}smp %{_kernel_ver}smp
 
 %files
 %defattr(644,root,root,755)
