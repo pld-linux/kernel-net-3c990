@@ -14,8 +14,6 @@ Version:	1.0.0a
 Release:	%{_rel}@%{_kernel_ver_str}
 License:	GPL
 Group:		Base/Kernel
-Group(de):	Grundsätzlich/Kern
-Group(pl):	Podstawowe/J±dro
 Source0:	http://support.3com.com/infodeli/tools/nic/linux/%{_orig_name}-%{version}.tar.gz
 Patch0:		%{_orig_name}-redefine.patch
 %{!?_without_dist_kernel:BuildRequires:         kernel-headers }
@@ -45,8 +43,6 @@ Release:        %{_rel}@%{_kernel_ver_str}
 %{!?_without_dist_kernel:Conflicts:     kernel-up}
 Obsoletes: 	kernel-net-%{_orig_name}
 Group:		Base/Kernel
-Group(de):	Grundsätzlich/Kern
-Group(pl):	Podstawowe/J±dro
 
 %description -n kernel-smp-net-%{_orig_name}
 This driver (3c990.c) has been written to work with the 3cr990 product line
