@@ -41,7 +41,7 @@ Nie obs³uguje kart serii 3C59x i 3C90x, istniej± inne sterowniki do tych linii p
 Summary:        Linux SMP driver for the 3Com 3C990 Network Interface Cards.
 Summary(pl):    Sterownik dla Linuxa SMP dla kart sieciowych 3Com 3C990.
 Release:        %{_rel}@%{_kernel_ver_str}
-%{!?_without_dist_kernel:Conflicts:     kernel < %{_kernel-ver}, kernel > %{_lernel_ver}}
+%{!?_without_dist_kernel:Conflicts:     kernel < %{_kernel_ver}, kernel > %{_kernel_ver}}
 %{!?_without_dist_kernel:Conflicts:     kernel-up}
 Obsoletes: 	kernel-net-%{_orig_name}
 Group:		Base/Kernel
