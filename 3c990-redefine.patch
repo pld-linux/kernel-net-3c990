@@ -1,0 +1,11 @@
+--- 3c990.c.orig	Sat Jan 26 21:56:41 2002
++++ 3c990.c	Sat Jan 26 22:05:37 2002
+@@ -222,7 +222,7 @@
+ 
+ 
+ #if (LINUX_VERSION_CODE < 0x02032a)
+-typedef u32 dma_addr_t;
++/* typedef u32 dma_addr_t; */
+ 
+ static inline void *pci_alloc_consistent(struct pci_dev *hwdev, size_t size,
+                      dma_addr_t *dma_handle)
