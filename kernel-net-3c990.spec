@@ -5,7 +5,7 @@
 %define		_kernel_ver	%(grep UTS_RELEASE %{_kernelsrcdir}/include/linux/version.h 2>/dev/null | cut -d'"' -f2)
 %define		_kernel_ver_str	%(echo %{_kernel_ver} | sed s/-/_/g)
 %define		_orig_name	3c990
-%define		_rel 2
+%define		_rel 3
 
 Summary:	Linux driver for the 3Com 3C990 Network Interface Cards
 Summary(pl):	Sterownik dla Linuxa dla kart sieciowych 3Com 3C990
@@ -19,8 +19,7 @@ Patch0:		%{_orig_name}-redefine.patch
 %{!?_without_dist_kernel:BuildRequires:         kernel-headers }
 Obsoletes: 	kernel-smp-net-%{_orig_name}
 Prereq:		/sbin/depmod
-%{!?_without_dist_kernel:Conflicts:	kernel < %{_kernel_ver}, kernel > %{_kernel_ver}}
-%{!?_without_dist_kernel:Conflicts:	kernel-smp}
+%{!?_without_dist_kernel:Requires:	kernel-up = %{_kernel_ver}}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -39,8 +38,7 @@ Nie obs³uguje kart serii 3C59x i 3C90x, istniej± inne sterowniki do tych linii p
 Summary:        Linux SMP driver for the 3Com 3C990 Network Interface Cards
 Summary(pl):    Sterownik dla Linuxa SMP dla kart sieciowych 3Com 3C990
 Release:        %{_rel}@%{_kernel_ver_str}
-%{!?_without_dist_kernel:Conflicts:     kernel < %{_kernel_ver}, kernel > %{_kernel_ver}}
-%{!?_without_dist_kernel:Conflicts:     kernel-up}
+%{!?_without_dist_kernel:Requires:     kernel-smp = %{_kernel_ver}}
 Obsoletes: 	kernel-net-%{_orig_name}
 Group:		Base/Kernel
 
