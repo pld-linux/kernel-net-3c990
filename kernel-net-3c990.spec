@@ -15,7 +15,7 @@ Group:		Base/Kernel
 Source0:	http://support.3com.com/infodeli/tools/nic/linux/%{_orig_name}-%{version}.tar.gz
 # Source0-md5:	e7597b2747a18f0cfe7bc81e83a2bc68
 Patch0:		%{_orig_name}-redefine.patch
-%{!?_without_dist_kernel:BuildRequires:         kernel-headers }
+%{!?_without_dist_kernel:BuildRequires:	kernel-headers }
 BuildRequires:	%{kgcc_package}
 BuildRequires:	rpmbuild(macros) >= 1.118
 %{!?_without_dist_kernel:%requires_releq_kernel_up}
@@ -28,7 +28,7 @@ line of network cards, manufactured by 3Com Corp.
 
 This driver is not intended for any other product line, including the
 3c59x or 3c90x product lines (although drivers with both of these
-names, and for both of these product lines, are available). 
+names, and for both of these product lines, are available).
 
 %description -l pl
 Sterownik dla Linuksa do kart sieciowych 3Com 3c990.
@@ -37,9 +37,9 @@ Nie obs³uguje kart serii 3c59x i 3c90x, istniej± inne sterowniki do
 tych linii produktów.
 
 %package -n kernel-smp-net-%{_orig_name}
-Summary:        Linux SMP driver for the 3Com 3C990 Network Interface Cards
-Summary(pl):    Sterownik dla Linuksa SMP dla kart sieciowych 3Com 3C990
-Release:        %{_rel}@%{_kernel_ver_str}
+Summary:	Linux SMP driver for the 3Com 3C990 Network Interface Cards
+Summary(pl):	Sterownik dla Linuksa SMP dla kart sieciowych 3Com 3C990
+Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 %{!?_without_dist_kernel:%requires_releq_kernel_smp}
 Requires(post,postun):	/sbin/depmod
@@ -75,7 +75,7 @@ install -d $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}{,smp}/misc
 install %{_orig_name}-smp.o $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}smp/misc/%{_orig_name}.o
 install %{_orig_name}.o $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}/misc/%{_orig_name}.o
 
-%clean 
+%clean
 rm -rf $RPM_BUILD_ROOT
 
 %post
@@ -97,5 +97,5 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n kernel-smp-net-%{_orig_name}
 %defattr(644,root,root,755)
-%doc README 
+%doc README
 /lib/modules/%{_kernel_ver}smp/misc/*
