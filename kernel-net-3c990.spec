@@ -3,7 +3,7 @@
 # _without_dist_kernel          without distribution kernel
 
 %define		_orig_name	3c990
-%define		_rel 6
+%define		_rel	7
 
 Summary:	Linux driver for the 3Com 3C990 Network Interface Cards
 Summary(pl):	Sterownik dla Linuksa do kart sieciowych 3Com 3C990
