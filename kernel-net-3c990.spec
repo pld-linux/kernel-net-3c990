@@ -5,7 +5,7 @@
 %define		_kernel_ver	%(grep UTS_RELEASE %{_kernelsrcdir}/include/linux/version.h 2>/dev/null | cut -d'"' -f2)
 %define		_kernel_ver_str	%(echo %{_kernel_ver} | sed s/-/_/g)
 %define		_orig_name	3c990
-%define		_rel 1
+%define		_rel 2
 
 Summary:	Linux driver for the 3Com 3C990 Network Interface Cards.
 Summary(pl):	Sterownik dla Linuxa dla kart sieciowych 3Com 3C990.
