@@ -7,8 +7,8 @@
 %define		_orig_name	3c990
 %define		_rel 2
 
-Summary:	Linux driver for the 3Com 3C990 Network Interface Cards.
-Summary(pl):	Sterownik dla Linuxa dla kart sieciowych 3Com 3C990.
+Summary:	Linux driver for the 3Com 3C990 Network Interface Cards
+Summary(pl):	Sterownik dla Linuxa dla kart sieciowych 3Com 3C990
 Name:		kernel-net-%{_orig_name}
 Version:	1.0.0a
 Release:	%{_rel}@%{_kernel_ver_str}
@@ -38,8 +38,8 @@ Nie obs³uguje kart serii 3C59x i 3C90x, istniej± inne sterowniki do tych linii p
 
 
 %package -n kernel-smp-net-%{_orig_name}
-Summary:        Linux SMP driver for the 3Com 3C990 Network Interface Cards.
-Summary(pl):    Sterownik dla Linuxa SMP dla kart sieciowych 3Com 3C990.
+Summary:        Linux SMP driver for the 3Com 3C990 Network Interface Cards
+Summary(pl):    Sterownik dla Linuxa SMP dla kart sieciowych 3Com 3C990
 Release:        %{_rel}@%{_kernel_ver_str}
 %{!?_without_dist_kernel:Conflicts:     kernel < %{_kernel_ver}, kernel > %{_kernel_ver}}
 %{!?_without_dist_kernel:Conflicts:     kernel-up}
@@ -71,8 +71,8 @@ kgcc -o %{_orig_name}.o -c %{rpmcflags}  -c -DMODULE -D__KERNEL__ -O2 -Wall -Wst
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}/net
-install -d $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}smp/net
+install -d $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}{,smp}/net
+
 install %{_orig_name}-smp.o $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}smp/net/%{_orig_name}.o
 install %{_orig_name}.o $RPM_BUILD_ROOT/lib/modules/%{_kernel_ver}/net/%{_orig_name}.o
 
