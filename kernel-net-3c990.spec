@@ -1,6 +1,6 @@
 
 # conditional build
-# _without_dist_kernel          without distribution kernel
+# _without_dist_kernel		without distribution kernel
 
 %define		_orig_name	3c990
 
@@ -8,14 +8,15 @@ Summary:	Linux driver for the 3Com 3C990 Network Interface Cards
 Summary(pl):	Sterownik dla Linuksa do kart sieciowych 3Com 3C990
 Name:		kernel-net-%{_orig_name}
 Version:	1.0.0a
-%define	_rel	15
+%define	_rel	16
 Release:	%{_rel}@%{_kernel_ver_str}
 License:	GPL
 Group:		Base/Kernel
 Source0:	http://support.3com.com/infodeli/tools/nic/linux/%{_orig_name}-%{version}.tar.gz
 # Source0-md5:	e7597b2747a18f0cfe7bc81e83a2bc68
 Patch0:		%{_orig_name}-redefine.patch
-%{!?_without_dist_kernel:BuildRequires:         kernel-headers }
+Patch1:		%{name}-alpha.patch
+%{!?_without_dist_kernel:BuildRequires:	kernel-headers }
 BuildRequires:	%{kgcc_package}
 PreReq:		/sbin/depmod
 %{!?_without_dist_kernel:%requires_releq_kernel_up}
@@ -36,9 +37,9 @@ Nie obs³uguje kart serii 3c59x i 3c90x, istniej± inne sterowniki do
 tych linii produktów.
 
 %package -n kernel-smp-net-%{_orig_name}
-Summary:        Linux SMP driver for the 3Com 3C990 Network Interface Cards
-Summary(pl):    Sterownik dla Linuksa SMP dla kart sieciowych 3Com 3C990
-Release:        %{_rel}@%{_kernel_ver_str}
+Summary:	Linux SMP driver for the 3Com 3C990 Network Interface Cards
+Summary(pl):	Sterownik dla Linuksa SMP dla kart sieciowych 3Com 3C990
+Release:	%{_rel}@%{_kernel_ver_str}
 Prereq:		/sbin/depmod
 %{!?_without_dist_kernel:%requires_releq_kernel_smp}
 Group:		Base/Kernel
@@ -60,12 +61,13 @@ tych linii produktów.
 %prep
 %setup -q -n %{_orig_name}-%{version} -c
 %patch0 -p0
+%patch1 -p1
 
 %build
 rm -f %{_orig_name}.o
-%{kgcc} -o %{_orig_name}.o -c %{rpmcflags}  -c -DMODULE -D__KERNEL__ -O2 -DSMP=1 -D__SMP__ -DCONFIG_X86_LOCAL_APIC -Wall -Wstrict-prototypes -I%{_kernelsrcdir}/include %{_orig_name}.c
+%{kgcc} -o %{_orig_name}.o -c %{rpmcflags} -c -DMODULE -D__KERNEL__ -O2 -DSMP=1 -D__SMP__ -DCONFIG_X86_LOCAL_APIC -Wall -Wstrict-prototypes -I%{_kernelsrcdir}/include %{_orig_name}.c
 mv -f %{_orig_name}.o %{_orig_name}-smp.o
-%{kgcc} -o %{_orig_name}.o -c %{rpmcflags}  -c -DMODULE -D__KERNEL__ -O2 -Wall -Wstrict-prototypes -I%{_kernelsrcdir}/include %{_orig_name}.c
+%{kgcc} -o %{_orig_name}.o -c %{rpmcflags} -c -DMODULE -D__KERNEL__ -O2 -Wall -Wstrict-prototypes -I%{_kernelsrcdir}/include %{_orig_name}.c
 
 %install
 rm -rf $RPM_BUILD_ROOT
