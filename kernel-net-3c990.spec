@@ -1,6 +1,6 @@
 #
 # Conditional build:
-bcond_without	dist_kernel		# without distribution kernel
+%bcond_without	dist_kernel		# without distribution kernel
 #
 %define		_orig_name	3c990
 
