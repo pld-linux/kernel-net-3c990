@@ -1,6 +1,6 @@
 #
 # Conditional build:
-# _without_dist_kernel          without distribution kernel
+bcond_without	dist_kernel		# without distribution kernel
 #
 %define		_orig_name	3c990
 
@@ -15,10 +15,10 @@ Group:		Base/Kernel
 Source0:	http://support.3com.com/infodeli/tools/nic/linux/%{_orig_name}-%{version}.tar.gz
 # Source0-md5:	e7597b2747a18f0cfe7bc81e83a2bc68
 Patch0:		%{_orig_name}-redefine.patch
-%{!?_without_dist_kernel:BuildRequires:	kernel-headers }
+%{?with_dist_kernel:BuildRequires:	kernel-headers }
 BuildRequires:	%{kgcc_package}
 BuildRequires:	rpmbuild(macros) >= 1.118
-%{!?_without_dist_kernel:%requires_releq_kernel_up}
+%{?with_dist_kernel:%requires_releq_kernel_up}
 Requires(post,postun):	/sbin/depmod
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -41,7 +41,7 @@ Summary:	Linux SMP driver for the 3Com 3C990 Network Interface Cards
 Summary(pl):	Sterownik dla Linuksa SMP dla kart sieciowych 3Com 3C990
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
-%{!?_without_dist_kernel:%requires_releq_kernel_smp}
+%{?with_dist_kernel:%requires_releq_kernel_smp}
 Requires(post,postun):	/sbin/depmod
 
 %description -n kernel-smp-net-%{_orig_name}
@@ -64,9 +64,9 @@ tych linii produktów.
 
 %build
 rm -f %{_orig_name}.o
-%{kgcc} -o %{_orig_name}.o -c %{rpmcflags}  -c -DMODULE -D__KERNEL__ -O2 -DSMP=1 -D__SMP__ -DCONFIG_X86_LOCAL_APIC -Wall -Wstrict-prototypes -I%{_kernelsrcdir}/include %{_orig_name}.c
+%{kgcc} -o %{_orig_name}.o -c %{rpmcflags} -c -DMODULE -D__KERNEL__ -O2 -DSMP=1 -D__SMP__ -DCONFIG_X86_LOCAL_APIC -Wall -Wstrict-prototypes -I%{_kernelsrcdir}/include %{_orig_name}.c
 mv -f %{_orig_name}.o %{_orig_name}-smp.o
-%{kgcc} -o %{_orig_name}.o -c %{rpmcflags}  -c -DMODULE -D__KERNEL__ -O2 -Wall -Wstrict-prototypes -I%{_kernelsrcdir}/include %{_orig_name}.c
+%{kgcc} -o %{_orig_name}.o -c %{rpmcflags} -c -DMODULE -D__KERNEL__ -O2 -Wall -Wstrict-prototypes -I%{_kernelsrcdir}/include %{_orig_name}.c
 
 %install
 rm -rf $RPM_BUILD_ROOT
