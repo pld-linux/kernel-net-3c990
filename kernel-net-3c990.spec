@@ -5,7 +5,7 @@
 %define		_orig_name	3c990
 
 Summary:	Linux driver for the 3Com 3C990 Network Interface Cards
-Summary(pl):	Sterownik dla Linuksa do kart sieciowych 3Com 3C990
+Summary(pl.UTF-8):   Sterownik dla Linuksa do kart sieciowych 3Com 3C990
 Name:		kernel-net-%{_orig_name}
 Version:	1.0.0a
 %define	_rel	10
@@ -30,15 +30,15 @@ This driver is not intended for any other product line, including the
 3c59x or 3c90x product lines (although drivers with both of these
 names, and for both of these product lines, are available).
 
-%description -l pl
+%description -l pl.UTF-8
 Sterownik dla Linuksa do kart sieciowych 3Com 3c990.
 
-Nie obs³uguje kart serii 3c59x i 3c90x, istniej± inne sterowniki do
-tych linii produktów.
+Nie obsÅ‚uguje kart serii 3c59x i 3c90x, istniejÄ… inne sterowniki do
+tych linii produktÃ³w.
 
 %package -n kernel-smp-net-%{_orig_name}
 Summary:	Linux SMP driver for the 3Com 3C990 Network Interface Cards
-Summary(pl):	Sterownik dla Linuksa SMP dla kart sieciowych 3Com 3C990
+Summary(pl.UTF-8):   Sterownik dla Linuksa SMP dla kart sieciowych 3Com 3C990
 Release:	%{_rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 %{?with_dist_kernel:%requires_releq_kernel_smp}
@@ -52,11 +52,11 @@ This driver is not intended for any other product line, including the
 3c59x or 3c90x product lines (although drivers with both of these
 names, and for both of these product lines, are available).
 
-%description -n kernel-smp-net-%{_orig_name} -l pl
+%description -n kernel-smp-net-%{_orig_name} -l pl.UTF-8
 Sterownik dla Linuksa SMP do kart sieciowych 3Com 3c990.
 
-Nie obs³uguje kart serii 3c59x i 3c90x, istniej± inne sterowniki do
-tych linii produktów.
+Nie obsÅ‚uguje kart serii 3c59x i 3c90x, istniejÄ… inne sterowniki do
+tych linii produktÃ³w.
 
 %prep
 %setup -q -n %{_orig_name}-%{version} -c
