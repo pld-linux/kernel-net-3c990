@@ -60,7 +60,7 @@ tych linii produktów.
 
 %prep
 %setup -q -n %{_orig_name}-%{version} -c
-%patch0 -p0
+%patch -P0 -p0
 
 %build
 rm -f %{_orig_name}.o
